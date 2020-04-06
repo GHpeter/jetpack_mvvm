@@ -1,6 +1,10 @@
+package  com.fuxing.plugin
+
 import com.android.build.gradle.AppExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+
+
 
 public  class LifeCyclePlugin implements  Plugin<Project> {
 

@@ -1,11 +1,14 @@
+package  com.fuxing.plugin
+
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
-import com.android.utils.FileUtils
+
 import com.fuxing.asm.LifeCycleClassVisitor
 import groovy.io.FileType
-import groovyjarjarasm.asm.ClassWriter
-import jdk.internal.org.objectweb.asm.ClassReader
-import jdk.internal.org.objectweb.asm.ClassVisitor
+import org.objectweb.asm.ClassWriter
+import org.objectweb.asm.ClassReader
+import org.objectweb.asm.ClassVisitor
+import org.apache.commons.io.FileUtils
 
 public class LifeCycleTransform extends Transform {
 
@@ -49,7 +52,7 @@ public class LifeCycleTransform extends Transform {
                                     ClassReader classReader = new ClassReader(file.bytes)
                                     ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
                                     ClassVisitor visitor = new LifeCycleClassVisitor(classWriter)
-                                    classReader.accept(visitor, groovyjarjarasm.asm.ClassReader.EXPAND_FRAMES)
+                                    classReader.accept(visitor, ClassReader.EXPAND_FRAMES)
                                     byte[] bytes = classWriter.toByteArray()
 
 

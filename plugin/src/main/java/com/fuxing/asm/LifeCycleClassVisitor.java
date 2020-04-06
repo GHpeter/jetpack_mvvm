@@ -1,9 +1,9 @@
 package com.fuxing.asm;
 
 
-import groovyjarjarasm.asm.ClassVisitor;
-import groovyjarjarasm.asm.MethodVisitor;
-import groovyjarjarasm.asm.Opcodes;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 /**
  * @author ：Create by lichunfu
@@ -26,11 +26,12 @@ public class LifeCycleClassVisitor  extends ClassVisitor {
 
     @Override
     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-        System.out.println("classVisitor visitorMethod name:"+name+",superName is"+superName);
+        System.out.println("classVisitor visitorMethod name:"+name+",superName is:"+superName);
         MethodVisitor mv=cv.visitMethod(access, name, descriptor, signature, exceptions);
-        if (superName.equals("android/support/v7/app/AppCompatActivity")
+        if (superName.equals("android/support/v7/app/AppCompatActivity")|
+        superName.equals("androidx/appcompat/app/AppCompatActivity")
         | superName.equals("android/app/Activity")){
-            if (name.startsWith("onCreate")){
+            if (name.startsWith("onCreate")|name.startsWith("onStop")){
                 return  new LifeCycleMethodVisitor(mv,className,name);
             }
         }

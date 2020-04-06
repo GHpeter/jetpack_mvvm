@@ -2,8 +2,7 @@ apply plugin: 'com.android.application'
 
 //自定义gradle插件中的properties的文件名
 
-//apply plugin: 'com.fuxing.plugin.module'
-
+apply plugin: 'com.fuxing.plugin.module'
 
 buildscript {
     repositories {

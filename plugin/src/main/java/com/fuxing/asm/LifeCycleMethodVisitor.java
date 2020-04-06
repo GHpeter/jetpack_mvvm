@@ -1,7 +1,7 @@
 package com.fuxing.asm;
 
-import groovyjarjarasm.asm.MethodVisitor;
-import groovyjarjarasm.asm.Opcodes;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
 
 /**
  * @author ：Create by lichunfu
