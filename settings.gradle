@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':ams_lifecycle_plugin', ':plugin'
 rootProject.name='ppjoke_mvvm'

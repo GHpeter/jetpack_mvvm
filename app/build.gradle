@@ -1,5 +1,24 @@
 apply plugin: 'com.android.application'
 
+//自定义gradle插件中的properties的文件名
+
+//apply plugin: 'com.fuxing.plugin.module'
+
+
+buildscript {
+    repositories {
+        maven {
+            url uri('../trackplugin')
+        }
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.fuxing.plugin:track-plugin:1.0.0'
+    }
+}
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.0"

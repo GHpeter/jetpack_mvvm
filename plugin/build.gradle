@@ -1,0 +1,28 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs',includes: ['*.jar'])
+    compile gradleApi()
+    compile localGroovy()
+
+    compile 'com.android.tools.build:gradle:3.5.3'
+
+    //ASM依赖
+    implementation 'org.ow2.asm:asm:7.1'
+    implementation 'org.ow2.asm:asm-commons:7.1'
+}
+
+group='com.fuxing.plugin'
+version='1.0.0'
+archivesBaseName='track-plugin'
+
+
+uploadArchives{
+    repositories {
+        mavenDeployer{
+         repository (url: uri('../trackplugin'))
+        }
+    }
+}
