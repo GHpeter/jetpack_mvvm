@@ -10,8 +10,9 @@ import javax.annotation.processing.Filer;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.SimpleAnnotationValueVisitor7;
+import javax.lang.model.util.SimpleAnnotationValueVisitor8;
 
-final class PayEntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
+final class PayEntryVisitor extends SimpleAnnotationValueVisitor8<Void, Void> {
 
     private final Filer FILER;
     private String mPackageName = null;

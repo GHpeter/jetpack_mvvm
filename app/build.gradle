@@ -58,4 +58,8 @@ dependencies {
 
     implementation project(":libnavannotation")
     annotationProcessor project(":libnavcompiler")
+
+
+    //微信依赖（包含统计）
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.3.4'
 }

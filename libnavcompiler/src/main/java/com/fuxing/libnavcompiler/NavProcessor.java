@@ -40,11 +40,12 @@ import javax.tools.StandardLocation;
  */
 @AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedAnnotationTypes({"com.fuxing.libnavannotation.FragmentDestination", "com.fuxing.libnavannotation.ActivityDestination"})
+@SupportedAnnotationTypes({"com.fuxing.libnavannotation.FragmentDestination",
+        "com.fuxing.libnavannotation.ActivityDestination"})
 public class NavProcessor extends AbstractProcessor {
+    private static final String OUTPUT_FILE_NAME = "destination.json";
     private Messager messager;
     private Filer filer;
-    private static final String OUTPUT_FILE_NAME = "destination.json";
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
