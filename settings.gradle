@@ -1,2 +1,2 @@
-include ':app', ':ams_lifecycle_plugin', ':plugin'
+include ':app', ':ams_lifecycle_plugin', ':plugin', ':libnavcompiler', ':libnavannotation'
 rootProject.name='ppjoke_mvvm'
