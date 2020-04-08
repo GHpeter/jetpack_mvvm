@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.fuxing.libnavannotation.FragmentDestination;
 import com.fuxing.ppjoke_mvvm.R;
 
-@FragmentDestination(pageUrl = "main/tabs/dash",asStarter = false)
+@FragmentDestination(pageUrl = "main/tabs/find",asStarter = false)
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;

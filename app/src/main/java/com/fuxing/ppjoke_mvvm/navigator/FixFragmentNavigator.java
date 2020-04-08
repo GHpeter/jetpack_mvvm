@@ -136,7 +136,7 @@ public class FixFragmentNavigator extends FragmentNavigator {
         }
         ft.setReorderingAllowed(true);
         ft.commit();
-        // The commit succeeded, update our view of the world
+        // The commit succeeded, update our com.fuxing.ppjoke_mvvm.view of the world
         if (isAdded) {
             mBackStack.add(destId);
             return destination;

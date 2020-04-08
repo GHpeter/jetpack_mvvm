@@ -14,10 +14,11 @@ public class AppGloabls {
 
     public static Application getApplication() {
         if (sApplication == null) {
-            Method method = null;
+
             try {
-                method = Class.forName("android.app.activityThread").getDeclaredMethod("currentApplication");
-                sApplication= (Application) method.invoke(null, null);
+                sApplication = (Application) Class.forName("android.app.ActivityThread").
+                        getMethod("currentApplication").invoke(null, (Object[]) null);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
