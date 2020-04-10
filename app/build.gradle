@@ -1,5 +1,3 @@
-import com.android.dx.cf.direct.AnnotationParser
-
 apply plugin: 'com.android.application'
 
 //自定义gradle插件中的properties的文件名
@@ -21,19 +19,19 @@ buildscript {
 
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        applicationId "com.fuxing.ppjoke_mvvm"
-        minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        defaultConfig{
-            ndk{
-                abiFilters 'armeabi-v7a'
+        defaultConfig {
+            ndk {
+                abiFilters 'armeabi-v7a', 'x86'
             }
         }
     }
@@ -43,7 +41,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions{
+    compileOptions {
         sourceCompatibility "1.8"
         targetCompatibility "1.8"
     }
@@ -51,23 +49,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.vectordrawable:vectordrawable:1.0.1'
-    implementation 'androidx.navigation:navigation-fragment:2.0.0'
-    implementation 'androidx.navigation:navigation-ui:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
 
     implementation project(":libnavannotation")
     annotationProcessor project(":libnavcompiler")
+    implementation project(":libcommon")
 
-    implementation 'com.alibaba:fastjson:1.2.59'
 
 
-    //微信依赖（包含统计）
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.3.4'
+
 }

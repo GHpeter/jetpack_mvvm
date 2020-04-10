@@ -4,3 +4,12 @@
 ### 添加bugly日志监测&热更新修复功能
 ### 实现APP黑白化功能
 
+
+### 模块
+ common:通用
+ navannotation:元注解器
+ navcompiler:注解依赖
+ network:网络请求库
+ plugin:插桩编译埋点监测
+ 
+

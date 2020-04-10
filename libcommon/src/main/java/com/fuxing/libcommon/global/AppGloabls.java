@@ -1,8 +1,7 @@
-package com.fuxing.ppjoke_mvvm.utils;
+package com.fuxing.libcommon.global;
 
 import android.app.Application;
 
-import java.lang.reflect.Method;
 
 /**
  * @author ：Create by lichunfu
