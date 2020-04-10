@@ -46,4 +46,10 @@ dependencies {
     api rootProject.ext.dependencies["wechat-with-mta"]
 
 
+
+    annotationProcessor rootProject.ext.dependencies["room-compiler"]
+    api rootProject.ext.dependencies["room-runtime"]
+    annotationProcessor rootProject.ext.dependencies["arch-lifecycle-compiler"]
+    api rootProject.ext.dependencies["arch-lifecycle-extension"]
+
 }
