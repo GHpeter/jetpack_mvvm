@@ -5,7 +5,7 @@ package com.fuxing.libnetwork;
  * @Date : 2020-04-10
  * Description:
  **/
-public class JsonCallback {
+public class JsonCallback<T> {
     public void onSuccess(ApiResponse<T> response) {
 
     }

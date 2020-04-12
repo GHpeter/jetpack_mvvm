@@ -10,6 +10,7 @@ import androidx.navigation.NavGraphNavigator;
 import androidx.navigation.NavigatorProvider;
 import androidx.navigation.fragment.FragmentNavigator;
 
+import com.fuxing.libcommon.global.AppGloabls;
 import com.fuxing.ppjoke_mvvm.model.Destination;
 import com.fuxing.ppjoke_mvvm.navigator.FixFragmentNavigator;
 

@@ -6,7 +6,7 @@ package com.fuxing.libnetwork;
  * @Date : 2020-04-10
  * Description:
  **/
-public class ApiResponse {
+public class ApiResponse<T> {
     public  boolean success;
     public  int status;
     public  String message;

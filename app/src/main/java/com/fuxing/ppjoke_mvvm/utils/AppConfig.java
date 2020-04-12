@@ -4,6 +4,7 @@ import android.content.res.AssetManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
+import com.fuxing.libcommon.global.AppGloabls;
 import com.fuxing.ppjoke_mvvm.model.BottomBar;
 import com.fuxing.ppjoke_mvvm.model.Destination;
 
