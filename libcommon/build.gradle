@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 
+
+
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -51,5 +53,17 @@ dependencies {
     api rootProject.ext.dependencies["room-runtime"]
     annotationProcessor rootProject.ext.dependencies["arch-lifecycle-compiler"]
     api rootProject.ext.dependencies["arch-lifecycle-extension"]
+
+
+    api rootProject.ext.dependencies["multidex"]
+
+    api rootProject.ext.dependencies["crashreport_upgrade"]
+
+    api rootProject.ext.dependencies["tinker-android-lib"]
+
+
+    api rootProject.ext.dependencies["bugly-nativecrashreport"]
+
+
 
 }

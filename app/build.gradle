@@ -4,6 +4,9 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'com.fuxing.plugin.module'
 
+// 依赖插件脚本
+apply from: 'tinker-support.gradle'
+
 buildscript {
     repositories {
         maven {
@@ -56,7 +59,11 @@ dependencies {
 
     implementation project(":libnavannotation")
     annotationProcessor project(":libnavcompiler")
-    implementation project(":libcommon")
+    compileOnly project(":libcommon")
+    implementation project(":libnetwork")
+
+
+
 
 
 

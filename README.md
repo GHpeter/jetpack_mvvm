@@ -12,4 +12,6 @@
  network:网络请求库
  plugin:插桩编译埋点监测
  
+ ### 请求地址
+ private static final String HOSTURL = "http://123.56.232.18:8080/serverdemo";
 
