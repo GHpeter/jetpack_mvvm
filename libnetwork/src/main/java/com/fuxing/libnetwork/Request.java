@@ -28,7 +28,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-//import com.mooc.libnetwork.cache.CacheManager;
 
 public abstract class Request<T, R extends Request> implements Cloneable {
     protected String mUrl;
@@ -123,6 +122,10 @@ public abstract class Request<T, R extends Request> implements Cloneable {
         }
     }
 
+    /**
+     * 同步请求
+     * @return
+     */
     public ApiResponse<T> execute() {
         if (mType == null) {
             throw new RuntimeException("同步方法,response 返回值 类型必须设置");
@@ -149,6 +152,10 @@ public abstract class Request<T, R extends Request> implements Cloneable {
         return null;
     }
 
+    /**
+     * 异步请求
+     * @param callback
+     */
     @SuppressLint("RestrictedApi")
     public void execute(final JsonCallback callback) {
         if (mCacheStrategy != NET_ONLY) {
