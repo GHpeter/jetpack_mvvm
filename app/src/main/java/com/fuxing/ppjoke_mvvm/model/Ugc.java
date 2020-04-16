@@ -32,7 +32,7 @@ public class Ugc extends BaseObservable implements Serializable {
 
     public void setShareCount(int shareCount) {
         this.shareCount = shareCount;
-        notifyPropertyChanged(com.fuxing.ppjoke_mvvm.BR._all);
+        notifyPropertyChanged(BR._all);
     }
 
     public int shareCount;
