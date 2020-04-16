@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 
 
-
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -48,7 +47,6 @@ dependencies {
     api rootProject.ext.dependencies["wechat-with-mta"]
 
 
-
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
     api rootProject.ext.dependencies["room-runtime"]
     annotationProcessor rootProject.ext.dependencies["arch-lifecycle-compiler"]
@@ -64,6 +62,9 @@ dependencies {
 
     api rootProject.ext.dependencies["bugly-nativecrashreport"]
 
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["glide-transform"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
 
 }
