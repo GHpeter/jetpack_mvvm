@@ -66,5 +66,9 @@ dependencies {
     api rootProject.ext.dependencies["glide-transform"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
 
+    api rootProject.ext.dependencies["exoplayer-core"]
+    api rootProject.ext.dependencies["exoplayer-dash"]
+    api rootProject.ext.dependencies["exoplayer-ui"]
+
 
 }

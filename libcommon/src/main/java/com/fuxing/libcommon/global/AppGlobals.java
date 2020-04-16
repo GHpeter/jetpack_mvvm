@@ -8,7 +8,7 @@ import android.app.Application;
  * @Date : 2020-04-07
  * Description:
  **/
-public class AppGloabls {
+public class AppGlobals {
     private static Application sApplication;
 
     public static Application getApplication() {

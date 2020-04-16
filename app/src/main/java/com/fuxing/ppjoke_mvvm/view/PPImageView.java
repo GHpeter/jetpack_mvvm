@@ -21,6 +21,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.fuxing.libcommon.utils.PixUtils;
 import com.fuxing.libcommon.view.ViewHelper;
+import com.fuxing.ppjoke_mvvm.MainActivity;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
@@ -40,6 +41,7 @@ public class PPImageView extends AppCompatImageView {
     }
 
     public PPImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+
         super(context, attrs, defStyleAttr);
         ViewHelper.setViewOutLine(this, attrs, defStyleAttr, 0);
     }
@@ -100,7 +102,7 @@ public class PPImageView extends AppCompatImageView {
                         public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
                             int height = resource.getIntrinsicHeight();
                             int width = resource.getIntrinsicWidth();
-                            setSize(widthPx, heightPx, marginLeft, maxWidht, maxHeight);
+                            setSize(width, height, marginLeft, maxWidht, maxHeight);
                             setImageDrawable(resource);
                         }
                     }

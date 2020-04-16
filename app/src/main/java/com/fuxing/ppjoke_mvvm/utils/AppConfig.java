@@ -4,7 +4,7 @@ import android.content.res.AssetManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.fuxing.libcommon.global.AppGloabls;
+import com.fuxing.libcommon.global.AppGlobals;
 import com.fuxing.ppjoke_mvvm.model.BottomBar;
 import com.fuxing.ppjoke_mvvm.model.Destination;
 
@@ -39,7 +39,7 @@ public class AppConfig {
     }
 
     private static String parseFile(String fileName) {
-        AssetManager assets = AppGloabls.getApplication().getAssets();
+        AssetManager assets = AppGlobals.getApplication().getAssets();
         InputStream stream = null;
         BufferedReader reader = null;
         StringBuilder builder = new StringBuilder();

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/dp_20"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.fuxing.ppjoke_mvvm.view.PPImageView
+        android:id="@+id/share_icon"
+        android:layout_width="@dimen/dp_44"
+        android:layout_height="@dimen/dp_44"
+        android:layout_gravity="center"
+        android:src="@drawable/icon_empty_no_data" />
+
+    <TextView
+        android:id="@+id/share_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center"
+        android:textColor="@color/color_666"
+        android:textSize="@dimen/sp_11"
+        tools:text="发送给谁" />
+</LinearLayout>

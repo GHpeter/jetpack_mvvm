@@ -10,7 +10,7 @@ import androidx.navigation.NavGraphNavigator;
 import androidx.navigation.NavigatorProvider;
 import androidx.navigation.fragment.FragmentNavigator;
 
-import com.fuxing.libcommon.global.AppGloabls;
+import com.fuxing.libcommon.global.AppGlobals;
 import com.fuxing.ppjoke_mvvm.model.Destination;
 import com.fuxing.ppjoke_mvvm.navigator.FixFragmentNavigator;
 
@@ -48,7 +48,7 @@ public class NavGraphBuilder {
             } else {
                 ActivityNavigator.Destination destination = activityNavigator.createDestination();
                 destination.setId(node.id);
-                destination.setComponentName(new ComponentName(AppGloabls.getApplication().getPackageName(), node.className));
+                destination.setComponentName(new ComponentName(AppGlobals.getApplication().getPackageName(), node.className));
                 destination.addDeepLink(node.pageUrl);
                 navGraph.addDestination(destination);
             }
