@@ -3,6 +3,8 @@ package com.fuxing.libcommon.global;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
+
 
 /**
  * @author ：Create by lichunfu

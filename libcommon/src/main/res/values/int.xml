@@ -12,11 +12,17 @@
     <integer name="number8">8</integer>
     <integer name="number9">9</integer>
     <integer name="number10">10</integer>
+    <integer name="number12">12</integer>
     <integer name="number100">100</integer>
     <integer name="number200">200</integer>
     <integer name="number500">500</integer>
     <integer name="number501">501</integer>
     <integer name="number404">404</integer>
+    <integer name="number10_0000">100000</integer>
+    <integer name="number20_0000">200000</integer>
+
+    <integer name="base_item_type_header">100000</integer>
+    <integer name="base_item_type_footer">200000</integer>
 
 
 </resources>
