@@ -70,5 +70,13 @@ dependencies {
     api rootProject.ext.dependencies["exoplayer-dash"]
     api rootProject.ext.dependencies["exoplayer-ui"]
 
+    api rootProject.ext.dependencies["smartrefresh-layout"]
+    api rootProject.ext.dependencies["smartrefresh-header"]
+    api rootProject.ext.dependencies["paging"]
+
+    api rootProject.ext.dependencies["viewpager2"]
+    api rootProject.ext.dependencies["aliyun-oss"]
+
+
 
 }

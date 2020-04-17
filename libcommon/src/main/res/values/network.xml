@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ALIYUN_BUCKET_URL" translatable="false">https://pipijoke.oss-cn-hangzhou.aliyuncs.com/</string>
+    <string name="BUCKET_NAME" translatable="false">ppjoke</string>
+    <string name="AUTH_SERVER_URL" translatable="false">http://123.56.232.18:7080/</string>
+    <string name="END_POINT" translatable="false">http://oss-cn-hangzhou.aliyuncs.com</string>
+
+
+</resources>

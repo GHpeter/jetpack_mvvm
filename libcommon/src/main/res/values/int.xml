@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="oss_connect_timeout">15000</integer>
+    <integer name="number0">0</integer>
+    <integer name="number1">1</integer>
+    <integer name="number2">2</integer>
+    <integer name="number3">3</integer>
+    <integer name="number4">4</integer>
+    <integer name="number5">5</integer>
+    <integer name="number6">6</integer>
+    <integer name="number7">7</integer>
+    <integer name="number8">8</integer>
+    <integer name="number9">9</integer>
+    <integer name="number10">10</integer>
+    <integer name="number100">100</integer>
+    <integer name="number200">200</integer>
+    <integer name="number500">500</integer>
+    <integer name="number501">501</integer>
+    <integer name="number404">404</integer>
+
+
+</resources>
