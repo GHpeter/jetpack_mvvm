@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">libcommon</string>
+    <string name="app_name" translatable="false">libcommon</string>
     <string name="nothing_with_here">虽然什么都没有，要不要下拉试下看看</string>
     <string name="i_konw_it">朕已知晓</string>
     <string name="publishing">正在发布...</string>
