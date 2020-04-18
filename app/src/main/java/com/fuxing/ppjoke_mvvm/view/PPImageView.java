@@ -21,7 +21,6 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.fuxing.libcommon.utils.PixUtils;
 import com.fuxing.libcommon.view.ViewHelper;
-import com.fuxing.ppjoke_mvvm.MainActivity;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;

@@ -31,7 +31,7 @@ android {
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        multiDexEnabled true
         defaultConfig {
             ndk {
                 abiFilters 'armeabi-v7a', 'x86'

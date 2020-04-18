@@ -6,4 +6,5 @@
     <string name="END_POINT" translatable="false">http://oss-cn-hangzhou.aliyuncs.com</string>
 
 
+    <string name="QUERY_HOT_FEEDS_LIST">/feeds/queryHotFeedsList</string>
 </resources>

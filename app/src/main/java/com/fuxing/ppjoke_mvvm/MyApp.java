@@ -25,7 +25,7 @@ public class MyApp extends Application {
     }
 
     private void installTinkerConfig(Context base) {
-        MultiDex.install(base);
+       MultiDex.install(base);
         // 安装tinker
         Beta.installTinker();
     }

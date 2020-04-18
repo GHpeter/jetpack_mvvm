@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 
 
+
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -15,6 +16,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+
     }
 
     buildTypes {
@@ -33,6 +36,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+//    api rootProject.ext.dependencies["multidex"]
 
     api rootProject.ext.dependencies["appcompat"]
     api rootProject.ext.dependencies["material"]
@@ -45,6 +49,7 @@ dependencies {
     api rootProject.ext.dependencies["ali-fastgsjon"]
     //微信依赖（包含统计）
     api rootProject.ext.dependencies["wechat-with-mta"]
+
 
 
     annotationProcessor rootProject.ext.dependencies["room-compiler"]
@@ -76,6 +81,21 @@ dependencies {
 
     api rootProject.ext.dependencies["viewpager2"]
     api rootProject.ext.dependencies["aliyun-oss"]
+
+
+
+    api rootProject.ext.dependencies["workmanager"]
+    api rootProject.ext.dependencies["gesture"]
+    api rootProject.ext.dependencies["paging"]
+
+    api rootProject.ext.dependencies["camera-core"]
+    api rootProject.ext.dependencies["camera-camera"]
+    api rootProject.ext.dependencies["camera-view"]
+    api rootProject.ext.dependencies["camera-extension"]
+
+
+
+
 
 
 

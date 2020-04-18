@@ -158,17 +158,17 @@ public abstract class Request<T, R extends Request> implements Cloneable {
      */
     @SuppressLint("RestrictedApi")
     public void execute(final JsonCallback callback) {
-        if (mCacheStrategy != NET_ONLY) {
-            ArchTaskExecutor.getIOThreadExecutor().execute(new Runnable() {
-                @Override
-                public void run() {
-                    ApiResponse<T> response = readCache();
-                    if (callback != null && response.body != null) {
-                        callback.onCacheSuccess(response);
-                    }
-                }
-            });
-        }
+//        if (mCacheStrategy != NET_ONLY) {
+//            ArchTaskExecutor.getIOThreadExecutor().execute(new Runnable() {
+//                @Override
+//                public void run() {
+//                    ApiResponse<T> response = readCache();
+//                    if (callback != null && response.body != null) {
+//                        callback.onCacheSuccess(response);
+//                    }
+//                }
+//            });
+//        }
         if (mCacheStrategy != CACHE_ONLY) {
             getCall().enqueue(new Callback() {
                 @Override
@@ -237,9 +237,9 @@ public abstract class Request<T, R extends Request> implements Cloneable {
         result.status = status;
         result.message = message;
 
-        if (mCacheStrategy != NET_ONLY && result.success && result.body != null && result.body instanceof Serializable) {
-            saveCache(result.body);
-        }
+//        if (mCacheStrategy != NET_ONLY && result.success && result.body != null && result.body instanceof Serializable) {
+//            saveCache(result.body);
+//        }
         return result;
     }
 

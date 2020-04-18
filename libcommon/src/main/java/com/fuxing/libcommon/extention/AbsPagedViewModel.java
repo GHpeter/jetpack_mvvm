@@ -1,6 +1,7 @@
 package com.fuxing.libcommon.extention;
 
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -19,8 +20,8 @@ import com.fuxing.libcommon.global.AppGlobals;
  * Description:
  **/
 public abstract class AbsPagedViewModel<T> extends AndroidViewModel {
-    private PagedList.Config config;
-    private DataSource dataSource;
+    protected PagedList.Config config;
+    protected DataSource dataSource;
     DataSource.Factory factory = new DataSource.Factory() {
         @NonNull
         @Override
@@ -32,8 +33,8 @@ public abstract class AbsPagedViewModel<T> extends AndroidViewModel {
 
         }
     };
-    private LiveData<PagedList<T>> pageData;
-    private MutableLiveData<Boolean> boundaryPageData = new MutableLiveData<>();
+    protected LiveData<PagedList<T>> pageData;
+    protected MutableLiveData<Boolean> boundaryPageData = new MutableLiveData<>();
     PagedList.BoundaryCallback callback = new PagedList.BoundaryCallback() {
         @Override
         public void onZeroItemsLoaded() {
@@ -52,9 +53,11 @@ public abstract class AbsPagedViewModel<T> extends AndroidViewModel {
 
         }
     };
+    protected Context mContext;
 
     public AbsPagedViewModel(@NonNull Application application) {
         super(application);
+        mContext=application;
         config = new PagedList.Config.Builder().setPageSize(AppGlobals.getIntRes(application, R.integer.number10))
                 .setInitialLoadSizeHint(AppGlobals.getIntRes(application, R.integer.number12))
                 .build();

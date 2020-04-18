@@ -85,6 +85,9 @@ public class UserManager {
     }
 
     public long getUserId() {
+        if (mUser==null){
+            return  mUser.userId=0;
+        }
         return isLogin() ? mUser.userId : 0;
     }
 
