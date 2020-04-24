@@ -7,22 +7,17 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.fuxing.libcommon.utils.StatusBar;
 import com.fuxing.ppjoke_mvvm.model.Destination;
-import com.fuxing.ppjoke_mvvm.model.User;
-import com.fuxing.ppjoke_mvvm.ui.login.UserManager;
 import com.fuxing.ppjoke_mvvm.utils.AppConfig;
 import com.fuxing.ppjoke_mvvm.utils.NavGraphBuilder;
 import com.fuxing.ppjoke_mvvm.view.AppBottomBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * App 主页 入口

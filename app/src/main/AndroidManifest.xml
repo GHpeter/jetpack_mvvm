@@ -24,18 +24,31 @@
 
 
     <application
-
         android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:authorities="${applicationId}.fileProvider"
+        android:exported="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
+        android:grantUriPermissions="true"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:appComponentFactory"
+
+       >
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent"
+            tools:replace="name,configChanges,theme"
+            />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -43,6 +56,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 兼容安卓 N -->
+        <provider
+            android:name="com.fuxing.ppjoke_mvvm.BuglyFileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            tools:replace="name,authorities"
+        >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

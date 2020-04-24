@@ -79,22 +79,6 @@ public class ListPlayerView extends FrameLayout implements IPlayTarget, PlayerCo
     }
 
     @Override
-    public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-
-        //监听视频播放的状态
-        PageListPlay pageListPlay = PageListPlayManager.get(mCategory);
-        SimpleExoPlayer exoPlayer = pageListPlay.exoPlayer;
-        if (playbackState == Player.STATE_READY && exoPlayer.getBufferedPosition() != 0 && playWhenReady) {
-            cover.setVisibility(GONE);
-            bufferView.setVisibility(GONE);
-        } else if (playbackState == Player.STATE_BUFFERING) {
-            bufferView.setVisibility(VISIBLE);
-        }
-        isPlaying = playbackState == Player.STATE_READY && exoPlayer.getBufferedPosition() != 0 && playWhenReady;
-        playBtn.setImageResource(isPlaying ? R.drawable.icon_video_pause : R.drawable.icon_video_play);
-    }
-
-    @Override
     public boolean onTouchEvent(MotionEvent event) {
         //点击该区域时 我们诸主动让视频控制器显示出来
         PageListPlay pageListPlay = PageListPlayManager.get(mCategory);
@@ -226,6 +210,16 @@ public class ListPlayerView extends FrameLayout implements IPlayTarget, PlayerCo
     }
 
     @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        isPlaying = false;
+        bufferView.setVisibility(GONE);
+        cover.setVisibility(VISIBLE);
+        playBtn.setVisibility(VISIBLE);
+        playBtn.setImageResource(R.drawable.icon_video_play);
+    }
+
+    @Override
     public void inActive() {
 
         //暂停视频的播放并让封面图和 开始播放按钮 显示出来
@@ -246,19 +240,25 @@ public class ListPlayerView extends FrameLayout implements IPlayTarget, PlayerCo
     }
 
     @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        isPlaying = false;
-        bufferView.setVisibility(GONE);
-        cover.setVisibility(VISIBLE);
-        playBtn.setVisibility(VISIBLE);
-        playBtn.setImageResource(R.drawable.icon_video_play);
-    }
-
-    @Override
     public void onVisibilityChange(int visibility) {
         playBtn.setVisibility(visibility);
         playBtn.setImageResource(isPlaying() ? R.drawable.icon_video_pause : R.drawable.icon_video_play);
+    }
+
+    @Override
+    public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+
+        //监听视频播放的状态
+        PageListPlay pageListPlay = PageListPlayManager.get(mCategory);
+        SimpleExoPlayer exoPlayer = pageListPlay.exoPlayer;
+        if (playbackState == Player.STATE_READY && exoPlayer.getBufferedPosition() != 0 && playWhenReady) {
+            cover.setVisibility(GONE);
+            bufferView.setVisibility(GONE);
+        } else if (playbackState == Player.STATE_BUFFERING) {
+            bufferView.setVisibility(VISIBLE);
+        }
+        isPlaying = playbackState == Player.STATE_READY && exoPlayer.getBufferedPosition() != 0 && playWhenReady;
+        playBtn.setImageResource(isPlaying ? R.drawable.icon_video_pause : R.drawable.icon_video_play);
     }
 
     public View getPlayController() {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="feed"
+            type="com.fuxing.ppjoke_mvvm.model.Feed" />
+
+        <import type="com.fuxing.libcommon.utils.PixUtils"></import>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_feed_detail_author_info"
+            app:feed="@{feed}"
+            app:fullscreen="@{false}"
+            app:leftMargin="@{PixUtils.dp2px(16)}"></include>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"></View>
+
+        <include
+            layout="@layout/layout_feed_text"
+            app:feedText="@{feed.feeds_text}"
+            app:lines="@{1000}"></include>
+
+        <com.fuxing.ppjoke_mvvm.view.PPImageView
+            android:id="@+id/header_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_10"></com.fuxing.ppjoke_mvvm.view.PPImageView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10"
+            android:layout_marginTop="6dp"
+            android:background="@color/color_divider"></View>
+
+    </LinearLayout>
+</layout>

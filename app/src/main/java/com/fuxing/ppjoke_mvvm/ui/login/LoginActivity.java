@@ -5,5 +5,5 @@ package com.fuxing.ppjoke_mvvm.ui.login;
  * @Date : 2020-04-16
  * Description:
  **/
-public class LoginActivity {
+public class LoginActivity  {
 }

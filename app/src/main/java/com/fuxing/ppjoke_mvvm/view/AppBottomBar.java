@@ -20,11 +20,7 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import java.util.List;
 
-/**
- * @author ：Create by lichunfu
- * @Date : 2020-04-08
- * Description:
- **/
+
 public class AppBottomBar extends BottomNavigationView {
     private static int[] sIcons = new int[]{R.drawable.icon_tab_home, R.drawable.icon_tab_sofa, R.drawable.icon_tab_publish, R.drawable.icon_tab_find, R.drawable.icon_tab_mine};
     private BottomBar config;

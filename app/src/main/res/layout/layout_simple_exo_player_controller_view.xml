@@ -27,9 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="26dp"
         android:layout_weight="1"
-        android:visibility="visible">
-
-    </com.google.android.exoplayer2.ui.DefaultTimeBar>
+        android:visibility="visible"></com.google.android.exoplayer2.ui.DefaultTimeBar>
 
     <TextView
         android:id="@id/exo_duration"

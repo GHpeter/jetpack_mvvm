@@ -11,7 +11,6 @@ import androidx.paging.ItemKeyedDataSource;
 import androidx.paging.PagedList;
 
 import com.alibaba.fastjson.TypeReference;
-import com.fuxing.libcommon.extention.AbsPagedViewModel;
 import com.fuxing.libcommon.global.AppGlobals;
 import com.fuxing.libnetwork.ApiResponse;
 import com.fuxing.libnetwork.ApiService;
@@ -20,7 +19,6 @@ import com.fuxing.libnetwork.Request;
 import com.fuxing.ppjoke_mvvm.R;
 import com.fuxing.ppjoke_mvvm.model.Feed;
 import com.fuxing.ppjoke_mvvm.ui.MutablePageKeyedDataSource;
-import com.fuxing.ppjoke_mvvm.ui.login.UserManager;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,6 +1,5 @@
 package com.fuxing.libcommon.extention;
 
-import android.content.Context;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.fuxing.libcommon.R;
-import com.fuxing.libcommon.global.AppGlobals;
 
 /**
  * 一个能够添加HeaderView,FooterView的PagedListAdapter。
@@ -25,28 +21,26 @@ public abstract class AbsPagedListAdapter<T, VH extends RecyclerView.ViewHolder>
     private SparseArray<View> mHeaders = new SparseArray<>();
     private SparseArray<View> mFooters = new SparseArray<>();
 
+    private int BASE_ITEM_TYPE_HEADER = 100000;
+    private int BASE_ITEM_TYPE_FOOTER = 200000;
 
-    private Context mContext;
 
-    protected AbsPagedListAdapter(Context context, @NonNull DiffUtil.ItemCallback<T> diffCallback) {
+    protected AbsPagedListAdapter(@NonNull DiffUtil.ItemCallback<T> diffCallback) {
         super(diffCallback);
-        this.mContext = context;
     }
 
     public void addHeaderView(View view) {
         //判断给View对象是否还没有处在mHeaders数组里面
-        if (mHeaders.indexOfValue(view) < AppGlobals.getIntRes(mContext, R.integer.number0)) {
-            int header = AppGlobals.getIntRes(mContext, R.integer.base_item_type_header);
-            mHeaders.put(header++, view);
+        if (mHeaders.indexOfValue(view) < 0) {
+            mHeaders.put(BASE_ITEM_TYPE_HEADER++, view);
             notifyDataSetChanged();
         }
     }
 
     public void addFooterView(View view) {
         //判断给View对象是否还没有处在mFooters数组里面
-        if (mFooters.indexOfValue(view) < AppGlobals.getIntRes(mContext, R.integer.number0)) {
-            int footer = AppGlobals.getIntRes(mContext, R.integer.base_item_type_footer);
-            mFooters.put(footer++, view);
+        if (mFooters.indexOfValue(view) < 0) {
+            mFooters.put(BASE_ITEM_TYPE_FOOTER++, view);
             notifyDataSetChanged();
         }
     }
@@ -54,7 +48,7 @@ public abstract class AbsPagedListAdapter<T, VH extends RecyclerView.ViewHolder>
     // 移除头部
     public void removeHeaderView(View view) {
         int index = mHeaders.indexOfValue(view);
-        if (index < AppGlobals.getIntRes(mContext, R.integer.number0)) return;
+        if (index < 0) return;
         mHeaders.removeAt(index);
         notifyDataSetChanged();
     }
@@ -62,7 +56,7 @@ public abstract class AbsPagedListAdapter<T, VH extends RecyclerView.ViewHolder>
     // 移除底部
     public void removeFooterView(View view) {
         int index = mFooters.indexOfValue(view);
-        if (index < AppGlobals.getIntRes(mContext, R.integer.number0)) return;
+        if (index < 0) return;
         mFooters.removeAt(index);
         notifyDataSetChanged();
     }
@@ -75,20 +69,54 @@ public abstract class AbsPagedListAdapter<T, VH extends RecyclerView.ViewHolder>
         return mFooters.size();
     }
 
+    @Override
+    public int getItemCount() {
+        int itemCount = super.getItemCount();
+        return itemCount + mHeaders.size() + mFooters.size();
+    }
+
+    public int getOriginalItemCount() {
+        return getItemCount() - mHeaders.size() - mFooters.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (isHeaderPosition(position)) {
+            //返回该position对应的headerview的  viewType
+            return mHeaders.keyAt(position);
+        }
+
+        if (isFooterPosition(position)) {
+            //footer类型的，需要计算一下它的position实际大小
+            position = position - getOriginalItemCount() - mHeaders.size();
+            return mFooters.keyAt(position);
+        }
+        position = position - mHeaders.size();
+        return getItemViewType2(position);
+    }
+
     protected int getItemViewType2(int position) {
-        return AppGlobals.getIntRes(mContext, R.integer.number0);
+        return 0;
+    }
+
+    private boolean isFooterPosition(int position) {
+        return position >= getOriginalItemCount() + mHeaders.size();
+    }
+
+    private boolean isHeaderPosition(int position) {
+        return position < mHeaders.size();
     }
 
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (mHeaders.indexOfKey(viewType) >= AppGlobals.getIntRes(mContext, R.integer.number0)) {
+        if (mHeaders.indexOfKey(viewType) >= 0) {
             View view = mHeaders.get(viewType);
             return (VH) new RecyclerView.ViewHolder(view) {
             };
         }
 
-        if (mFooters.indexOfKey(viewType) >= AppGlobals.getIntRes(mContext, R.integer.number0)) {
+        if (mFooters.indexOfKey(viewType) >= 0) {
             View view = mFooters.get(viewType);
             return (VH) new RecyclerView.ViewHolder(view) {
             };
@@ -109,21 +137,7 @@ public abstract class AbsPagedListAdapter<T, VH extends RecyclerView.ViewHolder>
         onBindViewHolder2(holder, position);
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        if (isHeaderPosition(position)) {
-            //返回该position对应的headerview的  viewType
-            return mHeaders.keyAt(position);
-        }
-
-        if (isFooterPosition(position)) {
-            //footer类型的，需要计算一下它的position实际大小
-            position = position - getOriginalItemCount() - mHeaders.size();
-            return mFooters.keyAt(position);
-        }
-        position = position - mHeaders.size();
-        return getItemViewType2(position);
-    }
+    protected abstract void onBindViewHolder2(VH holder, int position);
 
     @Override
     public void onViewAttachedToWindow(@NonNull RecyclerView.ViewHolder holder) {
@@ -150,26 +164,6 @@ public abstract class AbsPagedListAdapter<T, VH extends RecyclerView.ViewHolder>
     @Override
     public void registerAdapterDataObserver(@NonNull RecyclerView.AdapterDataObserver observer) {
         super.registerAdapterDataObserver(new AdapterDataObserverProxy(observer));
-    }
-
-    private boolean isHeaderPosition(int position) {
-        return position < mHeaders.size();
-    }
-
-    private boolean isFooterPosition(int position) {
-        return position >= getOriginalItemCount() + mHeaders.size();
-    }
-
-    protected abstract void onBindViewHolder2(VH holder, int position);
-
-    public int getOriginalItemCount() {
-        return getItemCount() - mHeaders.size() - mFooters.size();
-    }
-
-    @Override
-    public int getItemCount() {
-        int itemCount = super.getItemCount();
-        return itemCount + mHeaders.size() + mFooters.size();
     }
 
     //如果我们先添加了headerView,而后网络数据回来了再更新到列表上

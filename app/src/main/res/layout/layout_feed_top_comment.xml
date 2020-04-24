@@ -7,7 +7,7 @@
 
         <variable
             name="comment"
-            type="com.fuxing.ppjoke_mvvm.model.Comment" />
+            type="com.mooc.ppjoke.model.Comment" />
 
         <variable
             name="lifeCycleOwner"
@@ -23,7 +23,7 @@
 
     </data>
 
-    <com.fuxing.libcommon.view.CornerFrameLayout
+    <com.mooc.libcommon.view.CornerFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_16"
@@ -142,5 +142,5 @@
             </FrameLayout>
 
         </LinearLayout>
-    </com.fuxing.libcommon.view.CornerFrameLayout>
+    </com.mooc.libcommon.view.CornerFrameLayout>
 </layout>

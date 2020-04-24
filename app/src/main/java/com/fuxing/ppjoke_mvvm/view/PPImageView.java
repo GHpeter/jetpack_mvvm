@@ -25,11 +25,6 @@ import com.fuxing.libcommon.view.ViewHelper;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
-/**
- * @author ：Create by lichunfu
- * @Date : 2020-04-16
- * Description:
- **/
 public class PPImageView extends AppCompatImageView {
     public PPImageView(Context context) {
         super(context);
@@ -40,27 +35,13 @@ public class PPImageView extends AppCompatImageView {
     }
 
     public PPImageView(Context context, AttributeSet attrs, int defStyleAttr) {
-
         super(context, attrs, defStyleAttr);
         ViewHelper.setViewOutLine(this, attrs, defStyleAttr, 0);
     }
 
-    @BindingAdapter(value = {"blurUrl", "radius"})
-    public static void setBlurImageUrl(ImageView imageView, String blurUrl, int radius) {
-        Glide.with(imageView).load(blurUrl).override(radius)
-                .transform(new BlurTransformation())
-                .dontAnimate()
-                .into(new SimpleTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                        imageView.setBackground(resource);
-                    }
-                });
-    }
 
     public void setImageUrl(String imageUrl) {
         setImageUrl(this, imageUrl, false);
-
     }
 
     @BindingAdapter(value = {"image_url", "isCircle"})
@@ -76,7 +57,6 @@ public class PPImageView extends AppCompatImageView {
         } else if (radius > 0) {
             builder.transform(new RoundedCornersTransformation(PixUtils.dp2px(radius), 0));
         }
-
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         if (layoutParams != null && layoutParams.width > 0 && layoutParams.height > 0) {
             builder.override(layoutParams.width, layoutParams.height);
@@ -84,50 +64,67 @@ public class PPImageView extends AppCompatImageView {
         builder.into(view);
     }
 
+
     public void bindData(int widthPx, int heightPx, int marginLeft, String imageUrl) {
-        bindData(widthPx, heightPx, marginLeft, PixUtils.getScreenWidth(), PixUtils.getScreenHeight(), imageUrl);
+        bindData(widthPx, heightPx, marginLeft, PixUtils.getScreenWidth(), PixUtils.getScreenWidth(), imageUrl);
     }
 
-    public void bindData(int widthPx, int heightPx, int marginLeft, final int maxWidht, final int maxHeight, String imageUrl) {
+    public void bindData(int widthPx, int heightPx, final int marginLeft, final int maxWidth, final int maxHeight, String imageUrl) {
         if (TextUtils.isEmpty(imageUrl)) {
             setVisibility(GONE);
+            return;
         } else {
             setVisibility(VISIBLE);
         }
         if (widthPx <= 0 || heightPx <= 0) {
-            Glide.with(this).load(imageUrl).into(
-                    new SimpleTarget<Drawable>() {
-                        @Override
-                        public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                            int height = resource.getIntrinsicHeight();
-                            int width = resource.getIntrinsicWidth();
-                            setSize(width, height, marginLeft, maxWidht, maxHeight);
-                            setImageDrawable(resource);
-                        }
-                    }
-            );
+            Glide.with(this).load(imageUrl).into(new SimpleTarget<Drawable>() {
+                @Override
+                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                    int height = resource.getIntrinsicHeight();
+                    int width = resource.getIntrinsicWidth();
+                    setSize(width, height, marginLeft, maxWidth, maxHeight);
+
+                    setImageDrawable(resource);
+                }
+            });
+            return;
         }
+
+        setSize(widthPx, heightPx, marginLeft, maxWidth, maxHeight);
+        setImageUrl(this, imageUrl, false);
     }
 
-    private void setSize(int widthPx, int heightPx, int marginLeft, int maxWidht, int maxHeight) {
+    private void setSize(int width, int height, int marginLeft, int maxWidth, int maxHeight) {
         int finalWidth, finalHeight;
-        if (widthPx > heightPx) {
-            finalWidth = maxWidht;
-            finalHeight = (int) (heightPx / (widthPx * 1.0f / finalWidth));
+        if (width > height) {
+            finalWidth = maxWidth;
+            finalHeight = (int) (height / (width * 1.0f / finalWidth));
         } else {
             finalHeight = maxHeight;
-            finalWidth = (int) (widthPx / (heightPx * 1.0f / finalHeight));
+            finalWidth = (int) (width / (height * 1.0f / finalHeight));
         }
 
         ViewGroup.LayoutParams params = getLayoutParams();
-        params.height = finalHeight;
         params.width = finalWidth;
+        params.height = finalHeight;
         if (params instanceof FrameLayout.LayoutParams) {
-            ((FrameLayout.LayoutParams) params).leftMargin = heightPx > widthPx ? PixUtils.dp2px(marginLeft) : 0;
+            ((FrameLayout.LayoutParams) params).leftMargin = height > width ? PixUtils.dp2px(marginLeft) : 0;
         } else if (params instanceof LinearLayout.LayoutParams) {
-            ((LinearLayout.LayoutParams) params).leftMargin = heightPx > widthPx ? PixUtils.dp2px(marginLeft) : 0;
+            ((LinearLayout.LayoutParams) params).leftMargin = height > width ? PixUtils.dp2px(marginLeft) : 0;
         }
         setLayoutParams(params);
     }
 
+    @BindingAdapter(value = {"blur_url", "radius"})
+    public static void setBlurImageUrl(ImageView imageView, String blurUrl, int radius) {
+        Glide.with(imageView).load(blurUrl).override(radius)
+                .transform(new BlurTransformation())
+                .dontAnimate()
+                .into(new SimpleTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        imageView.setBackground(resource);
+                    }
+                });
+    }
 }

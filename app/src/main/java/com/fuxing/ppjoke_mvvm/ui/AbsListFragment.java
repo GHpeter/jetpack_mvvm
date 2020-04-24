@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fuxing.libcommon.extention.AbsPagedViewModel;
 import com.fuxing.libcommon.view.EmptyView;
 import com.fuxing.ppjoke_mvvm.R;
 import com.fuxing.ppjoke_mvvm.databinding.LayoutRefreshViewBinding;
